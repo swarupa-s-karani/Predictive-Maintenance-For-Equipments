@@ -283,13 +283,13 @@ export default function AdminEquipments() {
   });
 
   return (
-  <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50">
-    {/* Modern Sidebar with Better Color Palette */}
-    <div className="w-72 bg-gradient-to-br from-slate-700 via-blue-700 to-indigo-800 border-r border-slate-500 min-h-screen shadow-2xl hidden sm:block">
+  <div className="flex min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    {/* Modern Sidebar with Consistent Dark Theme */}
+    <div className="w-72 bg-gradient-to-br from-slate-800 via-blue-800 to-indigo-900 border-r border-slate-600 min-h-screen shadow-2xl hidden sm:block fixed left-0 top-0 z-40 overflow-y-auto">
       <div className="p-6">
         {/* User Avatar & Welcome */}
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl">
+          <div className="w-20 h-20 bg-gradient-to-br from-blue-400 via-cyan-400 to-blue-300 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl">
             <span className="text-2xl font-bold text-white">
               {profile.name ? profile.name.charAt(0).toUpperCase() : 'U'}
             </span>
@@ -357,26 +357,30 @@ export default function AdminEquipments() {
           </div>
         </div>
         
-        {/* Logout Button - Elegant Design */}
+        {/* Logout Button - Matching Home.jsx Style */}
         <button 
           onClick={logout} 
-          className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="group relative w-full inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 ease-out"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-          </svg>
-          <span>Logout</span>
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-700 to-cyan-700 rounded-2xl blur opacity-0 group-hover:opacity-75 transition duration-300"></span>
+          <span className="relative flex items-center space-x-2">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span>Logout</span>
+          </span>
         </button>
       </div>
     </div>
 
-    {/* Main Content with Light Background */}
-    <div className="flex-1 p-8 bg-gradient-to-br from-white via-gray-50 to-blue-50 backdrop-blur-sm">
+    {/* Main Content with White Background */}
+    <div className="flex-1 p-8 bg-white min-h-screen ml-72">
       {/* Page Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Healthcare Equipment Management System</h1>
         <p className="text-gray-600">Monitor, schedule, and manage hospital equipment maintenance</p>
       </div>
+      
       {/* Alert Component */}
       {alert.show && (
         <div className={`fixed top-6 right-6 z-50 p-4 rounded-xl shadow-2xl max-w-md border-l-4 backdrop-blur-sm ${
@@ -405,10 +409,15 @@ export default function AdminEquipments() {
         </div>
       )}
 
-      {/* EDA Image */}
+      {/* EDA Image - Properly Contained */}
       {edaImageBase64 && (
-        <div className="mb-8">
-          <img src={`data:image/png;base64,${edaImageBase64}`} alt="EDA" className="rounded-xl shadow-md w-full max-w-5xl" />
+        <div className="mb-8 bg-white rounded-xl shadow-lg overflow-hidden">
+          <img 
+            src={`data:image/png;base64,${edaImageBase64}`} 
+            alt="Equipment Data Analysis Dashboard" 
+            className="w-full h-auto object-contain"
+            style={{ maxHeight: '500px' }}
+          />
         </div>
       )}
 
@@ -417,7 +426,7 @@ export default function AdminEquipments() {
         <div className="bg-gradient-to-r from-yellow-50/95 to-orange-50/95 backdrop-blur-sm border border-yellow-200 rounded-2xl p-6 mb-8 shadow-sm">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mr-3">
                 <span className="text-white font-bold">{pendingReviews.length}</span>
               </div>
               <div>
@@ -427,7 +436,7 @@ export default function AdminEquipments() {
             </div>
             <button 
               onClick={() => setTab('logs')}
-              className="bg-yellow-600 text-white px-4 py-2 rounded-xl hover:bg-yellow-700 transition-colors font-medium"
+              className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-xl hover:from-yellow-600 hover:to-orange-600 transition-colors font-medium"
             >
               Review Tasks
             </button>
@@ -456,7 +465,7 @@ export default function AdminEquipments() {
                       setReviewData(review);
                       setShowReviewModal(true);
                     }}
-                    className="bg-blue-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors ml-4"
+                    className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-3 py-2 rounded-lg text-sm hover:from-blue-700 hover:to-cyan-700 transition-colors ml-4"
                   >
                     Review
                   </button>
@@ -486,7 +495,7 @@ export default function AdminEquipments() {
             className={`flex items-center px-6 py-3 font-semibold rounded-xl transition-all duration-300 ${
               tab === key 
                 ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg' 
-                : 'bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white/90 border border-gray-200'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
             }`}
           >
             {label}
@@ -501,7 +510,7 @@ export default function AdminEquipments() {
             <h2 className="text-2xl font-bold text-gray-800">Equipment Management</h2>
             <button 
               onClick={() => setShowAddEquipment(!showAddEquipment)} 
-              className="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 shadow-lg"
+              className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-lg"
             >
               + Add Equipment
             </button>
@@ -516,7 +525,7 @@ export default function AdminEquipments() {
             ].map(({ field, label, options }) => (
               <select 
                 key={field} 
-                className="p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 backdrop-blur-sm" 
+                className="p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" 
                 value={filters[field]} 
                 onChange={e => setFilters({ ...filters, [field]: e.target.value })}
               >
@@ -532,7 +541,7 @@ export default function AdminEquipments() {
 
           {/* Add Equipment Form */}
           {showAddEquipment && (
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl mb-6 border border-gray-200">
+            <div className="bg-gray-50 p-6 rounded-2xl mb-6 border border-gray-200">
               <h3 className="font-semibold mb-4 text-gray-800">Add New Equipment</h3>
               <div className="grid grid-cols-2 gap-4">
                 {Object.entries(equipmentForm).map(([k, v]) => (
@@ -541,12 +550,12 @@ export default function AdminEquipments() {
                     placeholder={k.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())} 
                     value={v} 
                     onChange={e => setEquipmentForm({ ...equipmentForm, [k]: e.target.value })} 
-                    className="border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90" 
+                    className="border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" 
                   />
                 ))}
                 <button 
                   onClick={handleAddEquipment} 
-                  className="col-span-2 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+                  className="col-span-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-colors"
                 >
                   Add Equipment
                 </button>
@@ -557,7 +566,7 @@ export default function AdminEquipments() {
           {/* Equipment List */}
           <div className="space-y-4">
             {filteredEquipments.sort((a, b) => a[0].localeCompare(b[0])).map(([id, type, mfg, loc, crit, date]) => (
-              <div key={id} className="bg-white/90 backdrop-blur-sm p-6 shadow-lg rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+              <div key={id} className="bg-white p-6 shadow-lg rounded-2xl border border-gray-100 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <div className="flex items-center mb-2">
@@ -571,14 +580,14 @@ export default function AdminEquipments() {
                   <div className="flex space-x-3">
                     <button 
                       onClick={() => navigate(`/equipment/${id}`)} 
-                      className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+                      className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium border border-gray-300"
                     >
                       Details
                     </button>
                     
                     {scheduledMap[id] ? (
-                      <span className="px-4 py-2 bg-green-100 text-green-700 font-medium rounded-lg">
-                        ✓ Scheduled
+                      <span className="px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium rounded-lg">
+                        Scheduled
                       </span>
                     ) : (
                       <button
@@ -587,7 +596,7 @@ export default function AdminEquipments() {
                           setSelectedDate(new Date());
                           setIssueDescription('');
                         }}
-                        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                        className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-colors font-medium"
                       >
                         Schedule
                       </button>
@@ -595,7 +604,7 @@ export default function AdminEquipments() {
                     
                     <button 
                       onClick={() => setConfirmDialog({ show: true, type: 'equipment', id })} 
-                      className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+                      className="bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-lg hover:from-red-700 hover:to-red-800 transition-colors font-medium"
                     >
                       Delete
                     </button>
@@ -609,7 +618,7 @@ export default function AdminEquipments() {
                         <Calendar
                           onChange={setSelectedDate}
                           value={selectedDate}
-                          className="rounded-xl border-none shadow-sm bg-white/80"
+                          className="rounded-xl border-none shadow-sm bg-white"
                         />
                       </div>
                       <div>
@@ -618,10 +627,10 @@ export default function AdminEquipments() {
                           value={issueDescription}
                           onChange={(e) => setIssueDescription(e.target.value)}
                           rows={6}
-                          className="w-full border border-gray-300 p-4 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90"
+                          className="w-full border border-gray-300 p-4 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                         />
                         <button
-                          className="w-full mt-4 bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+                          className="w-full mt-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-colors"
                           onClick={async () => {
                             if (!selectedDate || !issueDescription) {
                               showAlert("Please select a date and provide an issue description.");
@@ -683,7 +692,7 @@ export default function AdminEquipments() {
             <h2 className="text-2xl font-bold text-gray-800">User Management</h2>
             <button 
               onClick={() => setShowAddUser(!showAddUser)} 
-              className="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-300 shadow-lg"
+              className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-lg"
             >
               + Add User
             </button>
@@ -691,7 +700,7 @@ export default function AdminEquipments() {
 
           {/* Add User Form */}
           {showAddUser && (
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl mb-6 border border-gray-200">
+            <div className="bg-gray-50 p-6 rounded-2xl mb-6 border border-gray-200">
               <h3 className="font-semibold mb-4 text-gray-800">Add New User</h3>
               <div className="grid grid-cols-2 gap-4">
                 {Object.entries(userForm).map(([k, v]) => (
@@ -701,12 +710,12 @@ export default function AdminEquipments() {
                     value={v} 
                     type={k === 'password' ? 'password' : 'text'}
                     onChange={e => setUserForm({ ...userForm, [k]: e.target.value })} 
-                    className="border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90" 
+                    className="border border-gray-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" 
                   />
                 ))}
                 <button 
                   onClick={handleAddUser} 
-                  className="col-span-2 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+                  className="col-span-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-colors"
                 >
                   Add User
                 </button>
@@ -717,7 +726,7 @@ export default function AdminEquipments() {
           {/* Users List */}
           <div className="space-y-4">
             {users.map((user) => (
-              <div key={user[0]} className="bg-white/90 backdrop-blur-sm p-6 shadow-lg rounded-2xl border border-gray-100">
+              <div key={user[0]} className="bg-white p-6 shadow-lg rounded-2xl border border-gray-100">
                 <div className="flex justify-between items-start">
                   <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
                     <div>
@@ -743,7 +752,7 @@ export default function AdminEquipments() {
                   </div>
                   <button 
                     onClick={() => setConfirmDialog({ show: true, type: 'user', id: user[0] })} 
-                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors font-medium ml-6"
+                    className="bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-lg hover:from-red-700 hover:to-red-800 transition-colors font-medium ml-6"
                   >
                     Delete
                   </button>
@@ -757,7 +766,7 @@ export default function AdminEquipments() {
       {/* Delete Confirmation Dialog */}
       {confirmDialog.show && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl text-center max-w-md mx-4">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl text-center max-w-md mx-4">
             <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-red-600 text-2xl">⚠</span>
             </div>
@@ -768,7 +777,7 @@ export default function AdminEquipments() {
             <div className="flex justify-center gap-4">
               <button 
                 onClick={handleDelete} 
-                className="bg-red-600 text-white px-6 py-2 rounded-xl font-semibold hover:bg-red-700 transition-colors"
+                className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-xl font-semibold hover:from-red-700 hover:to-red-800 transition-colors"
               >
                 Yes, Delete
               </button>
@@ -786,14 +795,14 @@ export default function AdminEquipments() {
       {/* Post-Maintenance Review Modal */}
       {showReviewModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
             <div className="p-8">
               <h2 className="text-2xl font-bold mb-6 text-gray-800">
                 Post-Maintenance Review
               </h2>
               
               {/* Maintenance Details */}
-              <div className="bg-gray-50/80 backdrop-blur-sm p-6 rounded-xl mb-6">
+              <div className="bg-gray-50 p-6 rounded-xl mb-6">
                 <h3 className="font-semibold mb-4 text-gray-800">Maintenance Details</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
@@ -836,7 +845,7 @@ export default function AdminEquipments() {
                   <select
                     value={serviceRating}
                     onChange={(e) => setServiceRating(e.target.value)}
-                    className="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90"
+                    className="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                   >
                     <option value="">Select Rating</option>
                     <option value="1">⭐ (1 - Poor)</option>
@@ -854,12 +863,12 @@ export default function AdminEquipments() {
                   <select
                     value={completionStatus}
                     onChange={(e) => setCompletionStatus(e.target.value)}
-                    className="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90"
+                    className="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                   >
                     <option value="">Select Status</option>
-                    <option value="Approved">✅ Approved - Work Satisfactory</option>
-                    <option value="Requires Follow-up">🔄 Requires Follow-up - Additional Work Needed</option>
-                    <option value="Rejected">❌ Rejected - Work Unsatisfactory</option>
+                    <option value="Approved">Approved - Work Satisfactory</option>
+                    <option value="Requires Follow-up">Requires Follow-up - Additional Work Needed</option>
+                    <option value="Rejected">Rejected - Work Unsatisfactory</option>
                   </select>
                 </div>
               </div>
@@ -879,7 +888,7 @@ export default function AdminEquipments() {
                 </button>
                 <button
                   onClick={() => handleReviewMaintenance(reviewData.maintenance_id)}
-                  className="px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors"
+                  className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-colors"
                 >
                   Complete Review
                 </button>
@@ -892,7 +901,7 @@ export default function AdminEquipments() {
       {/* Schedule Form Modal */}
       {scheduleForm.show && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl max-w-md w-full">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
             <div className="p-6">
               <h2 className="text-xl font-bold mb-6 text-gray-800">
                 Schedule Maintenance for {scheduleForm.id}
@@ -901,7 +910,7 @@ export default function AdminEquipments() {
                 <select 
                   value={scheduleForm.maintenance_type} 
                   onChange={e => setScheduleForm({ ...scheduleForm, maintenance_type: e.target.value })} 
-                  className="border border-gray-300 p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90"
+                  className="border border-gray-300 p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                 >
                   <option value="">Select Maintenance Type</option>
                   <option value="Preventive">Preventive</option>
@@ -912,7 +921,7 @@ export default function AdminEquipments() {
                 <select 
                   value={scheduleForm.technician_id} 
                   onChange={e => setScheduleForm({ ...scheduleForm, technician_id: e.target.value })} 
-                  className="border border-gray-300 p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90"
+                  className="border border-gray-300 p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
                 >
                   <option value="">Select Technician</option>
                   {users.filter(user => user[2] === 'technician').map(user => (
@@ -923,13 +932,13 @@ export default function AdminEquipments() {
                   type="date" 
                   value={scheduleForm.date} 
                   onChange={e => setScheduleForm({ ...scheduleForm, date: e.target.value })} 
-                  className="border border-gray-300 p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90" 
+                  className="border border-gray-300 p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" 
                 />
                 <textarea 
                   placeholder="Issue Description" 
                   value={scheduleForm.issue_description} 
                   onChange={e => setScheduleForm({ ...scheduleForm, issue_description: e.target.value })} 
-                  className="border border-gray-300 p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90" 
+                  className="border border-gray-300 p-3 w-full rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" 
                   rows={3} 
                 />
                 <div className="flex justify-end gap-3 pt-4">
@@ -941,7 +950,7 @@ export default function AdminEquipments() {
                   </button>
                   <button 
                     onClick={handleSchedule} 
-                    className="bg-green-600 text-white px-6 py-2 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+                    className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-2 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-colors"
                   >
                     Schedule
                   </button>
