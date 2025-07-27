@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Make selected calendar date clearly visible */
+.react-calendar__tile--active {
+  background: #2563eb !important; /* Tailwind's blue-600 */
+  color: white !important;
+}
