@@ -5,6 +5,7 @@ This project aims to proactively predict whether a healthcare equipment is likel
 Healthcare institutions often rely on critical equipment like ventilators, infusion pumps, and imaging machines. Unexpected failures can have serious consequences. This solution leverages machine learning to assess equipment condition based on usage logs, environmental parameters, and operational metadata to predict maintenance needs ahead of time.
 
 Use Case:
+
 Preventive Healthcare: Identify equipment prone to failure before it occurs.
 
 Cost Reduction: Lower maintenance and downtime costs through early detection.
