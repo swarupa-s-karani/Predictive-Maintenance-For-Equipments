@@ -7,6 +7,9 @@ Healthcare institutions rely on critical equipment like ventilators, infusion pu
 ### Use Cases
 
 Preventive Healthcare: Identify equipment prone to failure before it occurs, ensuring continuous availability of life-critical devices.
+
 Cost Reduction: Lower maintenance and downtime costs through early detection and planned maintenance scheduling.
+
 Operational Efficiency: Improve equipment availability in high-dependency areas like ICU, Surgery, and Emergency departments.
+
 Scalable Solution: Designed to work across various departments and equipment types with role-based access control.
